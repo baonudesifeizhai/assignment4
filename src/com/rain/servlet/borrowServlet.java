@@ -41,8 +41,7 @@ public class borrowServlet extends HttpServlet {
 		BookDao bookdao = new BookDao();
 		//为了区分借书和还书的功能，设置tip，tip为1，表示借书
 		int tip = Integer.parseInt(request.getParameter("tip"));
-		// TODO Remove repeated condition.
-		if(tip==1 && tip == 1){
+		if(tip==1){
 			//获取图书id
 			int bid = Integer.parseInt(request.getParameter("bid"));
 			HttpSession session = request.getSession();
