@@ -26,12 +26,10 @@ public class DBUtil {
 	public static Connection getConnectDb(){
 		Connection conn = null;
 		try{
-			// FIXME At this point, this variable is not initiated,
-			// so the call of any method of this object would cause NPE.
+			conn = DriverManager.getConnection(url,username,password);
 			if(conn.isReadOnly()) {
 				System.out.println("ReadOnly Connection!");
 			}
-			conn = DriverManager.getConnection(url,username,password);
 		
 		} catch (SQLException e){
 			e.printStackTrace();
