@@ -47,6 +47,7 @@ public class AdminServlet extends HttpServlet {
 		//设置编码类型
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
+		// TODO This variable is not used at this block, it should be removed.
 		BookDao bookdao = new BookDao();
 		//这里为了简单，设置了tip，用来区分是修改密码功能，还是修改个人资料的功能，tip=1为修改密码
 		int tip = Integer.parseInt(request.getParameter("tip"));
