@@ -25,7 +25,8 @@ public class TypeDao {
 		try {
 			stm = conn.prepareStatement(sql);
 			rs = stm.executeQuery();
-			while(rs.next()){
+			while(rs != null){
+				rs.next();
 				TypeBean tag = new TypeBean();
 				tag.setTid(rs.getInt("tid"));
 				tag.setName(rs.getString("name"));

@@ -11,6 +11,7 @@ public class BookBean {
 	private int num;//图书数量
 	private String type;//图书的分类
 	private String press;//出版社
+	private String id;
 	public int getBid() {
 		return bid;
 	}

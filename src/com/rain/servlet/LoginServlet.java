@@ -33,7 +33,8 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -41,7 +42,8 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		doGet(request, response);
 		//登录的判断
@@ -51,6 +53,7 @@ public class LoginServlet extends HttpServlet {
 		//获取账号和密码
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String userID = request.getParameter("userID");
 		AdminDao userdao = new AdminDao();
 		//对账号和密码进行判断
 		boolean result = userdao.Login_verify(username, password);
@@ -60,13 +63,17 @@ public class LoginServlet extends HttpServlet {
 			AdminBean adminbean = new AdminBean();
 			AdminDao admindao = new AdminDao();
 			//更加账号和密码查找出读者的信息
-			adminbean = admindao.getAdminInfo(username,password);
+			adminbean = admindao.getAdminInfo(username, password, userID);
 			//将aid存入session中
 			session.setAttribute("aid", ""+adminbean.getAid());
 			//设置session的失效时间
 			session.setMaxInactiveInterval(6000);
 			//根据status的值来判断是管理员，还是读者，status=1为读者
-			if(adminbean.getStatus()==1){
+			int status = adminbean.getStatus();
+			if (status == 1) {
+				if (status > 3) {
+					System.out.println("Incorrect Status!");
+				}
 				response.sendRedirect("/books/index2.jsp");
 			}else{
 				response.sendRedirect("/books/admin.jsp");

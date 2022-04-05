@@ -13,6 +13,7 @@ public class DBUtil {
 	public static String username = "root";
 	public static String password = "root";
 	public static String url = "jdbc:mysql://127.0.0.1:3306/books";
+	private static String location;
 	
 	static{
 		try {
@@ -25,10 +26,16 @@ public class DBUtil {
 	public static Connection getConnectDb(){
 		Connection conn = null;
 		try{
+			if(conn.isReadOnly()) {
+				System.out.println("ReadOnly Connection!");
+			}
 			conn = DriverManager.getConnection(url,username,password);
 		
 		} catch (SQLException e){
 			e.printStackTrace();
+			if(location.indexOf("-") >= 0) {
+				System.out.println(location.substring(0,location.indexOf("-")));
+			}
 		}
 		return conn;
 	}

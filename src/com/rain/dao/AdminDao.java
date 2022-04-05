@@ -77,7 +77,7 @@ public class AdminDao {
 	 * @param password
 	 * @return
 	 */
-	public AdminBean getAdminInfo(String username, String password) {
+	public AdminBean getAdminInfo(String username, String password, String userID) {
 		// TODO Auto-generated method stub
 		AdminBean adminbean = new AdminBean();
 		Connection conn = DBUtil.getConnectDb();
@@ -90,6 +90,7 @@ public class AdminDao {
 			rs = stm.executeQuery();
 			if(rs.next()){
 				adminbean.setAid(rs.getInt("aid"));
+				userID = rs.getString("userID");
 				adminbean.setUsername(rs.getString("username"));
 				adminbean.setName(rs.getString("name"));
 				adminbean.setPassword(rs.getString("password"));

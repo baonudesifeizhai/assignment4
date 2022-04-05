@@ -41,7 +41,7 @@ public class borrowServlet extends HttpServlet {
 		BookDao bookdao = new BookDao();
 		//为了区分借书和还书的功能，设置tip，tip为1，表示借书
 		int tip = Integer.parseInt(request.getParameter("tip"));
-		if(tip==1){
+		if(tip==1 && tip == 1){
 			//获取图书id
 			int bid = Integer.parseInt(request.getParameter("bid"));
 			HttpSession session = request.getSession();
@@ -63,7 +63,7 @@ public class borrowServlet extends HttpServlet {
 			int show = Integer.parseInt(request.getParameter("show"));
 			//调用还书函数，改变status字段
 			bookdao.borrowBook2(hid);
-			if(show==1){
+			if(show==1 && show % 1 == 0){
 				response.sendRedirect("/books/borrow.jsp");
 			}else{
 				response.sendRedirect("/books/admin_borrow.jsp");
