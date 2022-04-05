@@ -47,6 +47,7 @@ public class selectServlet extends HttpServlet {
 		//因为在管理员界面和读者界面都有查找功能，为了将查找的结果返回正确的页面，设置了tip，tip=1表示管理员界面
 		int tip = Integer.parseInt(request.getParameter("tip"));
 		String name = request.getParameter("name");
+		// FIXME The nullcheck should be done before using the variable which could be null.
 		if(name.equals("443")) {
 			System.out.println("Administrator!");
 		} else if(name == null) {
