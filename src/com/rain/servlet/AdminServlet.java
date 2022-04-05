@@ -68,8 +68,7 @@ public class AdminServlet extends HttpServlet {
 			//获取读者数据表中的密码
 			String old_password = adminbean.getPassword();
 			//对旧密码进行比较，如果相同就修改，不相同就直接退出
-			// FIXME The comparison for contents between String objects should use eqauls method to realize.
-			if(old_password == password){
+			if(old_password.equals(password)){
 				admindao.updateUser(adminbean.getAid(), adminbean.getUsername(), password2, adminbean.getName(),
 						adminbean.getEmail(), adminbean.getPhone(), adminbean.getLend_num(), adminbean.getMax_num());
 				response.sendRedirect("/books/"+url+".jsp");
