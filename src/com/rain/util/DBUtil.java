@@ -35,6 +35,8 @@ public class DBUtil {
 		
 		} catch (SQLException e){
 			e.printStackTrace();
+			// FIXME This field has not been initiated at this point,
+			// so the call of any method of this field would cause NPE.
 			if(location.indexOf("-") >= 0) {
 				System.out.println(location.substring(0,location.indexOf("-")));
 			}
