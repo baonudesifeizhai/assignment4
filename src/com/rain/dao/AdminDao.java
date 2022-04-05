@@ -90,6 +90,8 @@ public class AdminDao {
 			rs = stm.executeQuery();
 			if(rs.next()){
 				adminbean.setAid(rs.getInt("aid"));
+				// TODO Useless assignment for argument, the assignment is only valid in this method
+				// as the type of this argument is String, and this argument is never read in this method.
 				userID = rs.getString("userID");
 				adminbean.setUsername(rs.getString("username"));
 				adminbean.setName(rs.getString("name"));
