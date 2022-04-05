@@ -64,8 +64,7 @@ public class borrowServlet extends HttpServlet {
 			int show = Integer.parseInt(request.getParameter("show"));
 			//调用还书函数，改变status字段
 			bookdao.borrowBook2(hid);
-			// TODO The judgement of remainder operation is useless and it should be removed.
-			if(show==1 && show % 1 == 0){
+			if(show==1){
 				response.sendRedirect("/books/borrow.jsp");
 			}else{
 				response.sendRedirect("/books/admin_borrow.jsp");
