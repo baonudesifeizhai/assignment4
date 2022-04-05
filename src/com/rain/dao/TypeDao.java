@@ -25,6 +25,7 @@ public class TypeDao {
 		try {
 			stm = conn.prepareStatement(sql);
 			rs = stm.executeQuery();
+			// FIXME The loop would never break out.
 			while(rs != null){
 				rs.next();
 				TypeBean tag = new TypeBean();
