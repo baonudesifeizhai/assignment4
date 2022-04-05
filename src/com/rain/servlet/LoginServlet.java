@@ -71,11 +71,6 @@ public class LoginServlet extends HttpServlet {
 			//根据status的值来判断是管理员，还是读者，status=1为读者
 			int status = adminbean.getStatus();
 			if (status == 1) {
-				// TODO This condition will always be false at this point,
-				// remove useless condition.
-				if (status > 3) {
-					System.out.println("Incorrect Status!");
-				}
 				response.sendRedirect("/books/index2.jsp");
 			}else{
 				response.sendRedirect("/books/admin.jsp");
